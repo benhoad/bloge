@@ -1,0 +1,28 @@
+!!! XHTML 5
+%html{html_attrs}
+  %head
+    %title
+      Bloge
+        
+    %link{ rel: 'icon', type: 'image/png', href: asset_path('.png') }/
+    %meta{ name: "keywords", content: "" }/
+    %meta{ name: "viewport", content: "width=device-width, minimum-scale=1.0, maximum-scale=1.0" }/
+    = stylesheet_link_tag "admin", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  %body
+    .nav
+      %ul
+        = link_to admin_root_path do
+          %li
+            Dashboard
+
+        = link_to admin_posts_path do
+          %li
+            Posts
+        = link_to destroy_user_session_path, method: :delete do
+          %li
+            Sign out
+
+    = yield
