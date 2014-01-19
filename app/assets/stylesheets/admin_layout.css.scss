@@ -1,3 +1,277 @@
-.nav{
-  background:red;
+$font-family: "WeblySleek UI Light", 'Lucida Grande', Arial, sans-serif;
+
+*{
+  font-family: $font-family;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 32pt;
+  line-height: 32pt; 
+  padding-bottom:5px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 18pt;
+  line-height: 18pt; 
+  padding-bottom:5px;
+  font-weight: 300;
+}
+
+[class^="icon-"]{
+  font: normal normal 16px "blogeconsregular";
+  display:inline-block;
+  line-height:1;
+}
+
+
+.icon-gear:before { content: "\f000";}
+
+.icon-boxes:before { content: "\f001";}
+
+.icon-assets:before { content: "\f002";}
+
+.icon-posts:before { content: "\f003";}
+
+.icon-dashboard:before { content: "\f004";}
+
+.icon-back:before { content: "\f005";}
+
+
+.background{
+  position: fixed;
+  top:0px;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  height:100%;
+  width:100%;
+  background-size: cover;
+}
+
+.nav {
+  position:fixed;
+  left:0px;
+  top:0px;
+  height:100%;
+  width:200px;
+  z-index:10;
+  text-align:center;
+
+  ul {
+    [class^="icon-"]{
+      font-size:42px;
+      width:100%;
+      margin-bottom:5px;
+    }
+    margin:0;
+    padding:0;
+    padding-top:100px;
+    list-style-type:none;
+    margin-right:auto;
+    margin-left:auto;
+    width:100px;
+
+    li {
+      // font-family: 'lucida grande';
+      width:100px;
+      height:100px;
+      margin:10px;
+      padding-top:20px;
+      background:gray;
+      color:white;
+      text-shadow:0px -1px 0px rgba(0,0,0,0.3);
+      font-size:12pt;
+
+      &:active{
+        -webkit-transform: scale(0.9, 0.9);
+        transform: scale(0.9, 0.9);
+      }
+
+
+      &.dashboard{
+        background:#A67ABE;
+      }
+
+      &.posts {
+        background:#20A073;
+      }
+
+      &.settings {
+        background:#5B8680;
+      }
+
+      &:hover {
+        [class^="icon-"]{
+          text-shadow:0 0 10px rgba(#fff, 0.5);
+        }
+      }
+
+
+    }
+  }
+}
+
+.user-panel {
+    position:absolute;
+    right:50px;
+    top:0px;
+    text-align: right;
+    .user-email{
+      font-size:18pt;
+      padding:5px;
+    }
+
+    .user-logout{
+      font-size: 14pt;
+      padding:5px;
+
+      a{
+        color:gray;
+      }
+    }
+}
+
+.post{
+  border-top:1px solid #ddd;
+  padding:10px;
+  padding-left:0px;
+  padding-right:0px;
+  margin-bottom:40px;
+}
+
+a {
+
+  display:inline-block;
+
+  &.posts {
+    background:#20A073;
+    padding:7px 14px;
+    color:white;
+  }
+
+  &.edit {
+    background:#2051A0;
+    padding:7px 14px;
+    color:white;
+  }
+
+  &.remove {
+    background:#A02020;
+    padding:7px 14px;
+    color:white;
+  }
+}
+
+.button{
+  text-decoration: none;
+  font-size:12pt;
+
+  &:hover{
+    text-decoration: none !important;
+    box-shadow: inset 0px 10px 20px rgba(#fff, 0.3);
+  }
+
+  &:active{
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+}
+
+.panel {
+  z-index:2;
+  position:relative;
+  color: #000;
+  padding-left: 250px;
+  padding-right:50px;
+  max-width: 100%;
+
+  .gutter-left {
+    position: absolute;
+    left:250px;
+    top:0px;
+    z-index:2;
+    a{
+      &:hover{
+        .back-icon{
+          color:#444;
+        }
+      }
+
+      &:active{
+        .back-icon{
+          -webkit-transform: translateX(-5px);
+          transform: translateX(-5px);
+        }
+      }
+
+      .back-icon{
+        font-size:36pt;
+        line-height:42pt;
+        color:black;
+      }
+    }
+    
+  }
+
+  .gutter-left-panel{
+    padding-left:60px;
+  }
+
+  h2 {
+    display:inline-block;
+    margin-right:20px;
+  }
+
+  a{
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+}
+
+form {
+  font-size:16pt;
+  vertical-align: top;
+  .field{
+    padding-top:20px;
+    label{
+      width: 200px;
+      display:inline-block;
+      vertical-align: top;
+      padding-top:12px;
+    }
+
+    input{
+      font-size:16pt;
+      width:500px;
+      padding:10px;
+      vertical-align: top;
+    }
+
+    textarea{
+      font-size:16pt;
+      width:500px;
+      padding:10px;
+      vertical-align: top;
+      min-height: 400px;
+    }
+  }
+  .actions {
+    padding-top:40px;
+    padding-bottom:180px;
+
+    input{
+      cursor:pointer;
+      border:none;
+      font-size:16pt
+    }
+
+    .create{
+      background:#20A073;
+      padding:14px 28px;
+      color:white;
+    }
+  }
 }

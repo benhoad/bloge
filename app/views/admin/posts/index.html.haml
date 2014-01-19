@@ -1,0 +1,16 @@
+.panel
+  %h2
+    Blog Posts | 
+  = link_to '+ New Post', new_admin_post_path, :class => 'posts button'
+  - @posts.each do |post|
+    .post
+      = link_to post do
+        %h1
+          = post.title
+      %span.pubish_at
+        = post.published_at
+      %p 
+        = post.body
+
+      = link_to 'Edit', edit_admin_post_path(post), :class => 'edit button' 
+      = link_to 'Remove', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'remove button' 

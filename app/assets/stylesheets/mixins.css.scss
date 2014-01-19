@@ -1,0 +1,15 @@
+// Fonts
+@import url(http://fonts.googleapis.com/css?family=Raleway|Lato:100,300);
+$font: 'Lato', 'Open Sans', 'Segoe UI light', Verdana, Tahoma, Helvetica, sans-serif;
+
+$fontH1: Arial, Tahoma, Helvetica, sans-serif;
+
+
+@mixin vendorize($property, $value) {
+  #{$property}: $value;
+  -webkit-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -o-#{$property}: $value;
+}
+

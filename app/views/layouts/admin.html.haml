@@ -12,17 +12,31 @@
     = csrf_meta_tags
 
   %body
+    .background
     .nav
       %ul
         = link_to admin_root_path do
-          %li
+          %li.dashboard
+            .icon-dashboard
             Dashboard
 
         = link_to admin_posts_path do
-          %li
+          %li.posts
+            .icon-posts
             Posts
-        = link_to destroy_user_session_path, method: :delete do
-          %li
-            Sign out
+        = link_to admin_posts_path do
+          %li.settings
+            .icon-gear
+            Settings
+
+    .panel
+      %h1
+        Bloge
+      .user-panel
+        .user-email
+          = current_user.email
+        .user-logout
+          = link_to destroy_user_session_path, method: :delete do
+            Sign Out
 
     = yield

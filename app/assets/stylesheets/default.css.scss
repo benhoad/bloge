@@ -1,0 +1,20 @@
+@mixin vendorize($property, $value) {
+  #{$property}: $value;
+  -webkit-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -o-#{$property}: $value;
+}
+
+* {
+    @include vendorize(box-sizing, border-box);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-backface-visibility: hidden;
+    text-decoration:none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
