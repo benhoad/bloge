@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="55px" viewBox="0 0 20 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <title>dropdown</title>
+    <description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M0,0 L0,55 L20,55 L20,0 L0,0 Z M9.70096189,31.25 L10.5669873,31.25 L6.23686028,23.75 C6.09878909,23.5108537 5.79299389,23.4289161 5.55384758,23.5669873 C5.31470127,23.7050585 5.23276369,24.0108537 5.37083488,24.25 L9.70096189,31.75 C9.89341198,32.0833333 10.3745372,32.0833333 10.5669873,31.75 L14.8971143,24.25 C15.0351855,24.0108537 14.9532479,23.7050585 14.7141016,23.5669873 C14.4749553,23.4289161 14.1691601,23.5108537 14.0310889,23.75 L9.70096189,31.25 Z" id="Rectangle-2-copy-3" fill="#20A073" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>
