@@ -36,6 +36,8 @@ gem "devise", "~> 3.2.2"
 
 gem "haml-rails", "~> 0.5.3"
 
+gem "moredown", "~> 1.3.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
