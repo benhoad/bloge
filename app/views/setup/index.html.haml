@@ -1,0 +1,29 @@
+.modal-content
+  = form_tag '/setup', method: :post, class: 'form-horizontal' do
+    .modal-header
+      %h2 Looks like this is a brand new site
+      %p Let's get you set up
+
+    .modal-body
+      - if @user
+        = render 'layouts/notices', errors: @user.errors
+
+      .form-group
+        = label_tag 'user[email]', 'Email', class: 'col-sm-4 control-label'
+        .col-sm-8
+          = text_field_tag 'user[email]', '', class: 'form-control'
+          .help-block You will sign in with this email
+
+      .form-group
+        = label_tag 'user[password]', 'Password', class: 'col-sm-4 control-label'
+        .col-sm-8
+          = password_field_tag 'user[password]', '', class: 'form-control'
+
+      .form-group
+        = label_tag 'user[password_confirmation]', 'Confirm password', class: 'col-sm-4 control-label'
+        .col-sm-8
+          = password_field_tag 'user[password_confirmation]', '', class: 'form-control'
+
+
+    .modal-footer
+      = submit_tag 'Save this and take me to my site', class: 'btn btn-primary'

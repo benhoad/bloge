@@ -32,6 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'rvm-capistrano'
+end
+
 gem "devise", "~> 3.2.2"
 
 gem "haml-rails", "~> 0.5.3"
