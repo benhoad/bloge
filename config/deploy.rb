@@ -30,6 +30,7 @@ after 'deploy:update_code' do
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   
   # Compile Assets
+  run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec rake assets:clean"
   run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
 end
 
