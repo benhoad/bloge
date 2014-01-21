@@ -24,6 +24,16 @@ set :deploy_via, :copy
 set :normalize_asset_timestamps, false
 set :rvm_type, :system
 
+# Add Configuration Files & Compile Assets
+after 'deploy:update_code' do
+  # Setup Configuration
+  run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  
+  # Compile Assets
+  run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
+end
+
+
 deploy.task :restart, roles: :app do
   # Fix Permissions
   sudo "chown -R www-data:www-data #{current_path}"
@@ -34,3 +44,4 @@ deploy.task :restart, roles: :app do
   # Restart Application
   run "service unicorn restart"
 end
+
