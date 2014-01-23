@@ -1,48 +1,59 @@
-require 'bundler/capistrano'
-require "rvm/capistrano"
+# config valid only for Capistrano 3.1
+lock '3.1.0'
 
-set :application, "benhoad.net"
-set :repository,  "git@github.com:benhoad/bloge.git"
+set :application, 'benhoad.net'
+set :repo_url, 'git@github.com:benhoad/bloge.git'
 
-role :web, "192.34.59.191"
-role :app, "192.34.59.191"
-role :db,  "192.34.59.191", :primary => true 
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :user, "root"
-set :runner,                     "www-data"
-set :admin_runner,               "www-data"
-
-set :scm,                        :git
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-
-set :use_sudo, false
-
+# Default deploy_to directory is /var/www/my_app
 set :deploy_to, "/home/rails/"
 set :deploy_via, :copy
 
-set :normalize_asset_timestamps, false
-set :rvm_type, :system
+set :bundle_flags, '--deployment'
 
-# Add Configuration Files & Compile Assets
-after 'deploy:update_code' do
-  # Setup Configuration
-  run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  
-  # Compile Assets
-  run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec rake assets:clean"
-  run "cd #{release_path}; RAILS_ENV=#{rails_env} bundle exec rake assets:precompile"
+# Default value for :scm is :git
+# set :scm, :git
+
+# Default value for :format is :pretty
+# set :format, :pretty
+
+# Default value for :log_level is :debug
+# set :log_level, :debug
+
+# Default value for :pty is false
+#set :pty, true
+
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+set :keep_releases, 5
+
+namespace :deploy do
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+      sudo "service unicorn restart"
+    end
+  end
+
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
 end
-
-
-deploy.task :restart, roles: :app do
-  # Fix Permissions
-  sudo "chown -R www-data:www-data #{current_path}"
-  sudo "chown -R www-data:www-data #{latest_release}"
-  sudo "chown -R www-data:www-data #{shared_path}/bundle"
-  sudo "chown -R www-data:www-data #{shared_path}/log"
-  
-  # Restart Application
-  run "service unicorn restart"
-end
-

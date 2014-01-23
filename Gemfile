@@ -32,7 +32,9 @@ group :doc do
 end
 
 group :development do
-  gem 'rvm-capistrano'
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-rails', '~> 1.1'
 end
 
 gem "devise", "~> 3.2.2"
